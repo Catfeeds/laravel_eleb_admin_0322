@@ -23,7 +23,7 @@
                     <ul class="dropdown-menu">
                         <li><a href="{{route('admins.index')}}">管理员</a></li>
                         <li role="separator" class="divider"></li>
-                        <li><a href="#">Separated link</a></li>
+                        <li><a href="{{route('members.index')}}">会员管理</a></li>
                         <li role="separator" class="divider"></li>
                         <li><a href="#">One more separated link</a></li>
                     </ul>

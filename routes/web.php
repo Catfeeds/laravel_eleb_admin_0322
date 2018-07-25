@@ -20,6 +20,7 @@ Route::resource('shop_categorys','Shop_categoryController');
 Route::resource('shop_users','shop_userController');
 Route::resource('admins','AdminController');
 Route::resource('actions','ActionController');
+Route::resource('members','MemberController');
 Route::get('login','LoginController@create')->name('login');
 Route::post('login','LoginController@store')->name('login');
 Route::delete('logout','LoginController@destroy')->name('logout');
