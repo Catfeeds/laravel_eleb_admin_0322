@@ -23,3 +23,14 @@ Route::resource('actions','ActionController');
 Route::get('login','LoginController@create')->name('login');
 Route::post('login','LoginController@store')->name('login');
 Route::delete('logout','LoginController@destroy')->name('logout');
+
+
+//接收文件上传的路由
+
+Route::post('upload',function (){
+    $storage=\Illuminate\Support\Facades\Storage::disk('oss');
+    $fileName=$storage->putFile('upload',request()->file('file'));
+    return [
+        'fileName'=>$fileName
+    ];
+})->name('upload');

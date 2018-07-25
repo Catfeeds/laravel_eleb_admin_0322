@@ -50,12 +50,11 @@ class ShopController extends Controller
             'discount.require'=>'优惠信息不能为空',
             'status.require'=>'状态不能为空',
         ]);
-        $file=$request->shop_img;
-        $fileName=$file->store('public/shopimg');
-        $img=Storage::url($fileName);
+//        $storage=Storage::disk('oss');
+//        $fileName=$storage->putFile('shop',$request->shop_img);
         Shop::create([
             'shop_name'=>$request->shop_name,
-            'shop_img'=>url($img),
+            'shop_img'=>$storage->url($fileName),
             'status'=>$request->status,
             'shop_category_id'=>$request->shop_category_id,
             'shop_rating'=>$request->shop_rating,
@@ -105,12 +104,12 @@ class ShopController extends Controller
 
 
         if (!empty($request->shop_img)){
-            $file=$request->shop_img;
-            $fileName=$file->store('public/shopimg');
-            $img=Storage::url($fileName);
+            $storage=Storage::disk('oss');
+            $fileName=$storage->putFile('shop',$request->shop_img);
+
             $shop->update([
                 'shop_name'=>$request->shop_name,
-                'shop_img'=>url($img),
+                'shop_img'=>$storage->url($fileName),
                 'status'=>$request->status,
                 'shop_category_id'=>$request->shop_category_id,
                 'shop_rating'=>$request->shop_rating,

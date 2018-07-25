@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Shop_category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class Shop_categoryController extends Controller
 {
@@ -36,9 +37,13 @@ class Shop_categoryController extends Controller
             'img.require'=>'分类图片不能为空',
             'status.require'=>'状态不能为空'
         ]);
-        $file=$request->img;
-        $fileName=$file->store('public/img');
-        Shop_category::create(['name'=>$request->name,'img'=>$fileName,'status'=>$request->status]);
+        //$file=$request->img;
+        $storage=Storage::disk('oss');
+        $fileName=$storage->putFile('shop_category',$request->img);
+
+
+        //$fileName=$file->store('public/img');
+        Shop_category::create(['name'=>$request->name,'img'=>$storage->url($fileName),'status'=>$request->status]);
 
             session()->flash('success',"添加成功");
             return redirect()->route('shop_categorys.index');
@@ -62,12 +67,12 @@ class Shop_categoryController extends Controller
         ]);
 
         if(!empty($request->img)){
-            $file=$request->img;
-            $fileName=$file->store('public/img');
+            $storage=Storage::disk('oss');
+            $fileName=$storage->putFile('shop_category',$request->img);
             $shop_category->update([
                 'name'=>$request->name,
                 'status'=>$request->status,
-                'img'=>$fileName
+                'img'=>$storage->url($fileName)
             ]);
 
         }else{

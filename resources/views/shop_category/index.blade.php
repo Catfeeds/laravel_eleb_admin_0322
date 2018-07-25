@@ -1,4 +1,6 @@
 @extends('default')
+
+
 @section('contents')
 <table class="table table-bordered">
     <tr>
@@ -14,7 +16,7 @@
         <tr>
             <td>{{$v->id}}</td>
             <td>{{$v->name}}</td>
-            <td><img src="{{\Illuminate\Support\Facades\Storage::url($v->img)}}" alt="" width="50px" height="50px"></td>
+            <td><img src="{{$v->img}}" alt="" width="50px" height="50px"></td>
             <td>{{$v->status==0?"隐藏":"显示"}}</td>
             <td>{{$v->created_at}}</td>
             <td>{{$v->updated_at}}</td>
