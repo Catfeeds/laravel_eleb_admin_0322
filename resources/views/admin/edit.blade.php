@@ -15,6 +15,13 @@
         <label for="">确认密码 ：</label>
         <input class="form-control" type="text" name="password_confirmation" >
     </div>
+    <div >
+        <label for="">角色 ：</label>
+        @foreach($roles as $v)
+            <label for=""><input type="checkbox" name="role_id[]" value="{{$v->id}}"
+                {{$myRole->contains($v)?'checked':''}}>{{$v->name}}</label>
+        @endforeach
+    </div>
 {{method_field('PATCH')}}
     {{csrf_field()}}
     <button type="submit" class="btn btn-primary">提交</button>

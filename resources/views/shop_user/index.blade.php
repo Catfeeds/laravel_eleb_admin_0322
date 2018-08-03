@@ -29,7 +29,9 @@
                         {{method_field('DELETE')}}
                         <button title="删除" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></button>
                     </form></span>
-
+                {{--@if($v->status==1)--}}
+                    {{--<a href="{{route('mail',['id'=>$v->id])}}" class="btn btn-primary">审核通过通知</a>--}}
+                    {{--@endif--}}
             </th>
         </tr>
         @endforeach

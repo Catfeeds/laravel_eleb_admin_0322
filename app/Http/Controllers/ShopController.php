@@ -54,7 +54,7 @@ class ShopController extends Controller
 //        $fileName=$storage->putFile('shop',$request->shop_img);
         Shop::create([
             'shop_name'=>$request->shop_name,
-            'shop_img'=>$storage->url($fileName),
+            'shop_img'=>$request->shop_img,
             'status'=>$request->status,
             'shop_category_id'=>$request->shop_category_id,
             'shop_rating'=>$request->shop_rating,
@@ -104,12 +104,12 @@ class ShopController extends Controller
 
 
         if (!empty($request->shop_img)){
-            $storage=Storage::disk('oss');
-            $fileName=$storage->putFile('shop',$request->shop_img);
+//            $storage=Storage::disk('oss');
+//            $fileName=$storage->putFile('shop',$request->shop_img);
 
             $shop->update([
                 'shop_name'=>$request->shop_name,
-                'shop_img'=>$storage->url($fileName),
+                'shop_img'=>$request->shop_img,
                 'status'=>$request->status,
                 'shop_category_id'=>$request->shop_category_id,
                 'shop_rating'=>$request->shop_rating,

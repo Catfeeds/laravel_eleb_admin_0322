@@ -23,8 +23,6 @@
                 <div id="fileList" class="uploader-list"></div>
                 <div id="filePicker">选择图片</div>
             </div>
-
-            <img src="{{$shop->shop_img}}" width="50px" height="50px" alt="">
         </div>
         <img src="" id="img2" alt="">
         <div class="form-group">

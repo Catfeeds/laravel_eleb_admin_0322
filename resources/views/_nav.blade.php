@@ -14,21 +14,15 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="{{route('shops.index')}}">商家信息 <span class="sr-only">(current)</span></a></li>
-                <li><a href="{{route('shop_categorys.index')}}">商家分类</a></li>
-                <li><a href="{{route('shop_users.index')}}">商家账号</a></li>
-                <li><a href="{{route('actions.index',['status'=>'null'])}}">活动管理</a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">管理<span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="{{route('admins.index')}}">管理员</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="{{route('members.index')}}">会员管理</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#">One more separated link</a></li>
-                    </ul>
-                </li>
+                {{--<li class="active"><a href="{{route('shops.index')}}">商家信息 <span class="sr-only">(current)</span></a></li>--}}
+                {{--<li><a href="{{route('shop_categorys.index')}}">商家分类</a></li>--}}
+                {{--<li><a href="{{route('shop_users.index')}}">商家账号</a></li>--}}
+                {{--<li><a href="{{route('actions.index',['status'=>'null'])}}">活动管理</a></li>--}}
+                {{--<li><a href="{{route('orders.index')}}">订单量统计</a></li>--}}
+                {{--<li><a href="{{route('menuCount')}}">菜品销量统计</a></li>--}}
+                {!!\App\Http\Controllers\NavController::getNavHtml()!!}
             </ul>
+
             <form  class="navbar-form navbar-left" action=""   role="search">
                 <div class="form-group">
                     <input type="text" name="keyword" class="form-contro" placeholder="Search">
@@ -48,12 +42,12 @@
                         <li><a href="">我的信息</a></li>
                         <li><a href="#">我的收藏</a></li>
                         <li role="separator" class="divider"></li>
-                        <li> <form action="{{route('logout')}}" method="post" style="display:inline">
-                                {{csrf_field()}}
-                                {{method_field('DELETE')}}
-                                <button class="btn btn-link">注销</button>
-                        </form>
-                        </li>
+                        {{--<li> <form action="{{route('logout')}}" method="post" style="display:inline">--}}
+                                {{--{{csrf_field()}}--}}
+                                {{--{{method_field('DELETE')}}--}}
+                        <a href="{{route('logout')}}" class="btn btn-link">注销</a>
+                        {{--</form>--}}
+
                     </ul>
                 </li>
                 @endauth
