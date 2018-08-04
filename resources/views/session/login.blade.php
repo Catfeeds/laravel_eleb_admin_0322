@@ -1,4 +1,3 @@
-
 @extends('default')
 @section('contents')
          <form method="POST" action="{{route('login')}}" style="margin-left: 40% ">
